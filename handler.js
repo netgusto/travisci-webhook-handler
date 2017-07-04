@@ -52,7 +52,7 @@ function create(options) {
 
             var key = new NodeRSA(options.public_key, {signingScheme: 'sha1'});
 
-            if (!key.verify(JSON.parse(data.payload), sig, 'base64', 'base64'))
+            if (!key.verify(data.payload, sig, 'utf8', 'base64'))
                 return hasError('Signed payload does not match signature')
 
             var result;
